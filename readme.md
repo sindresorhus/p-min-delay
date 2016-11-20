@@ -19,19 +19,15 @@ $ npm install --save p-min-delay
 ```js
 const pMinDelay = require('p-min-delay');
 
-pMinDelay(somePromise, 1000)
-	.then(value => {
-		// executed after minimum 1 second even if `somePromise` fulfills before that
-	})
-	.catch(error => {
-		// executed right away regardless of delay if `somePromise` rejects
-	});
+pMinDelay(somePromise, 1000).then(value => {
+	// executed after minimum 1 second even if `somePromise` fulfills before that
+});
 ```
 
 
 ## API
 
-### pMinDelay(input, minimumDelay)
+### pMinDelay(input, minimumDelay, [options])
 
 #### input
 
@@ -44,6 +40,19 @@ Promise to delay.
 Type: `number`
 
 Time in milliseconds.
+
+#### options
+
+Type: `Object`
+
+##### delayRejection
+
+Type: `boolean`<br>
+Default: `true`
+
+Delay the rejection.
+
+Turn this off if you want a rejected promise to fail fast.
 
 
 ## Related
