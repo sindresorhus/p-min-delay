@@ -4,7 +4,7 @@
 
 While the [`delay`](https://github.com/sindresorhus/delay) module delays the promise a specified amount of time and then resolves it, this module ensures the promise resolves after the specified amount of time.
 
-Useful when you have a promise that may settle immediately or may take some time, and you want to ensure it doesn't settle too fast. For example, if you want to show a loading indicator only if the promise takes more than 1 second.
+Useful when you have a promise that may settle immediately or may take some time, and you want to ensure it doesn't settle too fast. For example, if you want to show a loading indicator for at least 1 second (but longer if needed) to prevent a confusing flash in the UI.
 
 
 ## Install
