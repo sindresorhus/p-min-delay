@@ -1,4 +1,4 @@
-import test from 'ava';
+import {serial as test} from 'ava';
 import delay from 'delay';
 import timeSpan from 'time-span';
 import inRange from 'in-range';
@@ -19,8 +19,14 @@ test('promise takes longer than minimum delay', async t => {
 	t.true(inRange(end(), 170, 230));
 });
 
-test('minimum delay does not apply when rejected', async t => {
+test('minimum delay applies to rejection too', async t => {
 	const end = timeSpan();
 	await m(Promise.reject(), 100).catch(() => {});
+	t.true(inRange(end(), 70, 130));
+});
+
+test('option - {delayRejection:false}', async t => {
+	const end = timeSpan();
+	await m(Promise.reject(), 100, {delayRejection: false}).catch(() => {});
 	t.true(inRange(end(), 0, 30));
 });
