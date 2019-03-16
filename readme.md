@@ -19,9 +19,10 @@ $ npm install --save p-min-delay
 ```js
 const pMinDelay = require('p-min-delay');
 
-pMinDelay(somePromise, 1000).then(value => {
+(async () => {
+	const value = pMinDelay(somePromise, 1000);
 	// executed after minimum 1 second even if `somePromise` fulfills before that
-});
+})();
 ```
 
 
