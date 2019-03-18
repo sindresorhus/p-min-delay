@@ -10,7 +10,7 @@ Useful when you have a promise that may settle immediately or may take some time
 ## Install
 
 ```
-$ npm install --save p-min-delay
+$ npm install p-min-delay
 ```
 
 
@@ -20,17 +20,17 @@ $ npm install --save p-min-delay
 const pMinDelay = require('p-min-delay');
 
 (async () => {
-	const value = pMinDelay(somePromise, 1000);
-	// executed after minimum 1 second even if `somePromise` fulfills before that
+	const value = await pMinDelay(somePromise, 1000);
+	// Executed after minimum 1 second even if `somePromise` fulfills before that
 })();
 ```
 
 
 ## API
 
-### pMinDelay(input, minimumDelay, [options])
+### pMinDelay(promise, minimumDelay, [options])
 
-#### input
+#### promise
 
 Type: `Promise`
 

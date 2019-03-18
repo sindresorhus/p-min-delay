@@ -1,7 +1,7 @@
 'use strict';
 const delay = require('delay');
 
-const pMinDelay = async (promise, ms, options) => {
+const pMinDelay = async (promise, minimumDelay, options) => {
 	options = {
 		delayRejection: true,
 		...options
@@ -15,7 +15,7 @@ const pMinDelay = async (promise, ms, options) => {
 		});
 	}
 
-	const value = await Promise.all([promise, delay(ms)]);
+	const value = await Promise.all([promise, delay(minimumDelay)]);
 	return promiseError ? Promise.reject(promiseError) : value[0];
 };
 

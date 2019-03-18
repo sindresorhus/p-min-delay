@@ -12,11 +12,21 @@ export interface Options {
 /**
 Delay a promise a minimum amount of time.
 
-@param input - Promise to delay.
+@param promise - Promise to delay.
 @param minimumDelay - Time in milliseconds.
+
+@example
+```
+import pMinDelay from 'p-min-delay';
+
+(async () => {
+	const value = await pMinDelay(somePromise, 1000);
+	// Executed after minimum 1 second even if `somePromise` fulfills before that
+})();
+```
 */
 export default function pMinDelay<ValueType>(
-	input: PromiseLike<ValueType>,
+	promise: PromiseLike<ValueType>,
 	minimumDelay: number,
 	options?: Options
 ): Promise<ValueType>;
