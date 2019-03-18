@@ -1,19 +1,23 @@
 'use strict';
 const delay = require('delay');
 
-module.exports = (promise, ms, opts) => {
-	opts = Object.assign({
-		delayRejection: true
-	}, opts);
+const pMinDelay = async (promise, ms, options) => {
+	options = {
+		delayRejection: true,
+		...options
+	};
 
-	let promiseErr;
+	let promiseError;
 
-	if (opts.delayRejection) {
-		promise = promise.catch(err => {
-			promiseErr = err;
+	if (options.delayRejection) {
+		promise = promise.catch(error => {
+			promiseError = error;
 		});
 	}
 
-	return Promise.all([promise, delay(ms)])
-		.then(val => promiseErr ? Promise.reject(promiseErr) : val[0]);
+	const value = await Promise.all([promise, delay(ms)]);
+	return promiseError ? Promise.reject(promiseError) : value[0];
 };
+
+module.exports = pMinDelay;
+module.exports.default = pMinDelay;
