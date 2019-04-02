@@ -20,4 +20,5 @@ const pMinDelay = async (promise, minimumDelay, options) => {
 };
 
 module.exports = pMinDelay;
+// TODO: Remove this for the next major release
 module.exports.default = pMinDelay;
