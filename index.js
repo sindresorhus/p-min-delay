@@ -15,8 +15,8 @@ const pMinDelay = async (promise, minimumDelay, options) => {
 		});
 	}
 
-	const value = await Promise.all([promise, delay(minimumDelay)]);
-	return promiseError ? Promise.reject(promiseError) : value[0];
+	const [value] = await Promise.all([promise, delay(minimumDelay)]);
+	return promiseError ? Promise.reject(promiseError) : value;
 };
 
 module.exports = pMinDelay;
