@@ -1,4 +1,4 @@
-# p-min-delay [![Build Status](https://travis-ci.org/sindresorhus/p-min-delay.svg?branch=master)](https://travis-ci.org/sindresorhus/p-min-delay)
+# p-min-delay
 
 > Delay a promise a minimum amount of time
 
