@@ -1,5 +1,5 @@
 import {serial as test} from 'ava';
-import delay from 'delay';
+import delay from 'yoctodelay';
 import timeSpan from 'time-span';
 import inRange from 'in-range';
 import pMinDelay from '.';
