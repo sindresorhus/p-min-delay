@@ -1,5 +1,5 @@
 'use strict';
-const delay = require('delay');
+const delay = require('yoctodelay');
 
 const pMinDelay = async (promise, minimumDelay, options) => {
 	options = {
