@@ -6,29 +6,24 @@ While the [`delay`](https://github.com/sindresorhus/delay) module delays the pro
 
 Useful when you have a promise that may settle immediately or may take some time, and you want to ensure it doesn't settle too fast. For example, if you want to show a loading indicator for at least 1 second (but longer if needed) to prevent a confusing flash in the UI.
 
-
 ## Install
 
 ```
 $ npm install p-min-delay
 ```
 
-
 ## Usage
 
 ```js
-const pMinDelay = require('p-min-delay');
+import pMinDelay from 'p-min-delay';
 
-(async () => {
-	const value = await pMinDelay(somePromise, 1000);
-	// Executed after minimum 1 second even if `somePromise` fulfills before that
-})();
+const value = await pMinDelay(somePromise, 1000);
+// Executed after minimum 1 second even if `somePromise` fulfills before that
 ```
-
 
 ## API
 
-### pMinDelay(promise, minimumDelay, [options])
+### pMinDelay(promise, minimumDelay, options?)
 
 #### promise
 
@@ -48,13 +43,12 @@ Type: `Object`
 
 ##### delayRejection
 
-Type: `boolean`<br>
+Type: `boolean`\
 Default: `true`
 
 Delay the rejection.
 
 Turn this off if you want a rejected promise to fail fast.
-
 
 ## Related
 
@@ -62,8 +56,3 @@ Turn this off if you want a rejected promise to fail fast.
 - [p-immediate](https://github.com/sindresorhus/p-immediate) - Returns a promise resolved in the next event loop - think `setImmediate()`
 - [p-timeout](https://github.com/sindresorhus/p-timeout) - Timeout a promise after a specified amount of time
 - [More…](https://github.com/sindresorhus/promise-fun)
-
-
-## License
-
-MIT © [Sindre Sorhus](https://sindresorhus.com)
