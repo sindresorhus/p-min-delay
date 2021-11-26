@@ -6,7 +6,7 @@ import pMinDelay from './index.js';
 
 const fixture = Symbol('fixture');
 
-test('only settles after minumum delay', async t => {
+test('only settles after minimum delay', async t => {
 	const end = timeSpan();
 	const result = await pMinDelay(Promise.resolve(fixture), 200);
 	t.is(result, fixture);
