@@ -13,6 +13,13 @@ test('only settles after minimum delay', async t => {
 	t.true(inRange(end(), {start: 170, end: 230}));
 });
 
+test('accept non-promise object', async t => {
+	const end = timeSpan();
+	const result = await pMinDelay(fixture, 200);
+	t.is(result, fixture);
+	t.true(inRange(end(), {start: 170, end: 230}));
+});
+
 test('promise takes longer than minimum delay', async t => {
 	const end = timeSpan();
 	await pMinDelay(delay(200), 100);
