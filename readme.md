@@ -8,8 +8,8 @@ Useful when you have a promise that may settle immediately or may take some time
 
 ## Install
 
-```
-$ npm install p-min-delay
+```sh
+npm install p-min-delay
 ```
 
 ## Usage
