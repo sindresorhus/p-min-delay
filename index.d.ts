@@ -1,4 +1,4 @@
-export interface Options {
+export type Options = {
 	/**
 	Delay the rejection.
 
@@ -7,7 +7,7 @@ export interface Options {
 	@default true
 	*/
 	readonly delayRejection?: boolean;
-}
+};
 
 /**
 Delay a promise a minimum amount of time.
