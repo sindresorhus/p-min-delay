@@ -1,6 +1,6 @@
 {
 	"name": "p-min-delay",
-	"version": "4.1.0",
+	"version": "4.1.1",
 	"description": "Delay a promise a minimum amount of time",
 	"license": "MIT",
 	"repository": "sindresorhus/p-min-delay",
