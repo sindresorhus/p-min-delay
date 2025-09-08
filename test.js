@@ -37,3 +37,38 @@ test('option - {delayRejection:false}', async t => {
 	await pMinDelay(Promise.reject(), 100, {delayRejection: false}).catch(() => {});
 	t.true(inRange(end(), {start: 0, end: 30}));
 });
+
+test('handles early rejection without unhandled promise rejection - issue #25', async t => {
+	const end = timeSpan();
+	const error = new Error('Test error');
+
+	// Promise that rejects before minimum delay (50ms < 100ms)
+	const promise = new Promise((_, reject) => {
+		setTimeout(() => reject(error), 50);
+	});
+
+	// Should handle rejection without unhandled promise rejection
+	await t.throwsAsync(
+		pMinDelay(promise, 100),
+		{is: error},
+	);
+
+	// Should still wait for minimum delay
+	t.true(inRange(end(), {start: 70, end: 130}));
+});
+
+test('handles immediate rejection without unhandled promise rejection', async t => {
+	const end = timeSpan();
+	const error = new Error('Immediate error');
+
+	// Promise that rejects immediately (synchronously)
+	const promise = Promise.reject(error);
+
+	await t.throwsAsync(
+		pMinDelay(promise, 100),
+		{is: error},
+	);
+
+	// Should still wait for minimum delay
+	t.true(inRange(end(), {start: 70, end: 130}));
+});
